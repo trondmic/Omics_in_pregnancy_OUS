@@ -1,1 +1,3 @@
-# Omics_in_pregnancy_OUS
+# Omics in pregnancy
+
+Our research group study omics related to the placenta
