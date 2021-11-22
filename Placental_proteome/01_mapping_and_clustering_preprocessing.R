@@ -1,6 +1,6 @@
 ###
 #
-# author: Maren-Helene Høie Degnes
+# author: Maren-Helene HÃ¸ie Degnes
 # date: 04.11.21
 # purpose: cluster vessels across all their proteins to identify 
 #          subgroupings and map proteins to reactome categories to 
