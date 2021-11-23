@@ -1,6 +1,6 @@
 ###
 #
-# author: Maren-Helene Høie Degnes
+# author: Maren-Helene HÃ¸ie Degnes
 # date: 04.11.21
 # purpose: Investigate the gestational patterns of upregulated and/or specifically released proteins from placenta to mother 
 #
