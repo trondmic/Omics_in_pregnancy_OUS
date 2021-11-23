@@ -1,6 +1,6 @@
 ###
 #
-# author: Maren-Helene Høie Degnes
+# author: Maren-Helene HÃ¸ie Degnes
 # date: 04.11.21
 # purpose: perform welch t-tests to identify the six classes of proteins:
 #          - proteins released from placenta to maternal circulation
