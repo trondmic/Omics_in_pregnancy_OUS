@@ -1,6 +1,6 @@
 ###
 #
-# author: Maren-Helene Høie Degnes
+# author: Maren-Helene HÃ¸ie Degnes
 # date: 04.11.21
 # purpose: adjust differences between pairs of vessels for water 
 #          shift and possible other biases using median normalization
