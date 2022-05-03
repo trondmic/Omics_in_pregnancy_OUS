@@ -1,3 +1,1 @@
-# Omics in pregnancy
-
-Our research group study omics related to the placenta
+# Proteomics in placenta samples 
