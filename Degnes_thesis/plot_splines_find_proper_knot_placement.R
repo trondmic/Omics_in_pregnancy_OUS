@@ -10,9 +10,9 @@ library(lme4)
 library(Biobase)
 
 # different values of knots placements to loop over
-innerknots <-c(NA,24.5,12,12.1,15.1)
-firstknots <- c(12,12,12,12,15)
-lastknots <- c(34,34,34,34,34,34)
+innerknots <-c(NA,24.5,12.1,14.1,15.1)
+firstknots <- c(12,12,12,14,15)
+lastknots <- c(34,34,34,34,34)
 prins <- c(1419)
 mains <- c("A. Only boundary knots",
            "B. Inner knot in middle of boundary knots",
