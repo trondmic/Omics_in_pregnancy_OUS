@@ -1,0 +1,78 @@
+#######
+#
+# Author: Maren-Helene Langeland Degnes
+# Date: 13. Dec. 2022
+# Purpose: Identify final sparse and stable biomarker signatures (BMS) using the statistical 
+#          machine learning model elastic net with stability selection
+#
+#########
+
+
+require(tidyverse)
+require(Biobase)
+require(parallel)
+require(c060)
+source("04_c060_functions.R")
+
+
+
+alphas <- c(0.8, 0.2, 0.2)            # obtained from script BMS_validate_models.R
+
+
+######### ============ Run stability selection by c060 package ============ ############
+load("detrendedSTORKdataset.RData")
+dta <- exprs(detrendedSTORKdataset) %>% t()  # proteins in columns and samples in rows
+ano <- pData(detrendedSTORKdataset)
+prot <- fData(detrendedSTORKdataset)
+colnames(dta) <- prot$AptName
+dta <- dta[which(ano$PEgroups %in% c(0,2)),]
+ano <- ano[which(ano$PEgroups %in% c(0,2)),]
+
+
+stabc060_alpha04list <- list()
+BMS_list <- list()
+for (tp in 1:3){
+  
+  alph <- alphas[tp]       
+  cl.columns <- c("BMI","Age","Nulliparity")
+  sub.idx <- which(ano$TimePoint==tp)
+  clinical <- ano[sub.idx,cl.columns]
+  xmx <- cbind(dta[sub.idx,],clinical) %>% data.matrix()
+  set.seed(1234,kind="default")
+  spath <- stabpath(y=ano$PE[sub.idx], 
+                    x=xmx, 
+                    size = 0.632, 
+                    steps = 100,
+                    mc.cores=1, 
+                    family="binomial", 
+                    weakness=.8,
+                    alpha=alph)
+  
+  stabrun <- c060::stabsel(x=spath, error=1, type="pfer", pi_thr=0.6)
+  stabproteinsidx <- stabrun$stable
+  names(stabproteinsidx) <- spath$x[stabproteinsidx,stabrun$lpos]
+  
+  stabc060_alpha04list[[tp]] <- stabproteinsidx
+  
+  logmod <- glm(ano$PE[sub.idx] ~ .,  data=xmx[,stabproteinsidx] %>% as.data.frame(), family = binomial)
+  BMS_list[[tp]] <-  logmod$coefficients
+}
+
+
+BMS_list
+# > BMS_list
+# [[1]]
+# (Intercept)         BMI         Age Nulliparity 
+# -2.8816246   0.2655126  -0.1689690   1.0234564 
+# 
+# [[2]]
+# (Intercept)   CRLF1.14747.9  IL17RC.5468.67 PCDHGC3.7859.21             BMI             Age     Nulliparity 
+# -6.0065257       2.1384663       1.6622500       0.9487187       0.2816211      -0.1163731       1.2047208 
+# 
+# [[3]]
+# (Intercept) HTRA1.15594.47 FLT1.16315.105 IL17RC.5468.67  FLT1.8231.122  FAAH2.8396.42            BMI            Age    Nulliparity 
+# -3.5645366      2.0495814      0.6687844      1.9668865     -0.6902965      0.8684607      0.2662140     -0.1799197      0.6790335 
+# 
+# 
+# 
+
