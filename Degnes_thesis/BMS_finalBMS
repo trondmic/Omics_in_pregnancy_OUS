@@ -61,15 +61,15 @@ for (tp in 1:3){
 
 BMS_list
 # > BMS_list
-# [[1]]
+# [[1]]        ######### Biomarker signature at visit 1 
 # (Intercept)         BMI         Age Nulliparity 
 # -2.8816246   0.2655126  -0.1689690   1.0234564 
 # 
-# [[2]]
+# [[2]]        ######### Biomarker signature at visit 2 
 # (Intercept)   CRLF1.14747.9  IL17RC.5468.67 PCDHGC3.7859.21             BMI             Age     Nulliparity 
 # -6.0065257       2.1384663       1.6622500       0.9487187       0.2816211      -0.1163731       1.2047208 
 # 
-# [[3]]
+# [[3]]        ######### Biomarker signature at visit 3 
 # (Intercept) HTRA1.15594.47 FLT1.16315.105 IL17RC.5468.67  FLT1.8231.122  FAAH2.8396.42            BMI            Age    Nulliparity 
 # -3.5645366      2.0495814      0.6687844      1.9668865     -0.6902965      0.8684607      0.2662140     -0.1799197      0.6790335 
 # 
