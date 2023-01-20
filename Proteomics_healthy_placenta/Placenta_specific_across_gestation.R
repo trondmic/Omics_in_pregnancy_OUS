@@ -5,6 +5,15 @@
 # Purpose: Define placenta specific proteins and
 #           model these across gestation
 #
+# Lines 109 to 121 in this script is based on an original R script developed 
+# by A. Tarca (atarca@med.wayne.edu), provided to us by the author on 22th of November 2020
+# Reference: 
+#   Erez, O., Romero, R., Maymon, E., Chaemsaithong, P., 
+#   Done, B., Pacora, P., Panaitescu, B., Chaiworapongsa, 
+#   T., Hassan, S. S., & Tarca, A. L. (2017). The prediction 
+#   of late-onset preeclampsia: Results from a longitudinal 
+#   proteomics study. PLOS ONE, 12(7), e0181468. 
+#
 #############
 
 
